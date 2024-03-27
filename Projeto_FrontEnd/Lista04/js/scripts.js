@@ -14,7 +14,7 @@ window.addEventListener("load", function () {
             lista.innerHTML = '';
             data.results.slice(0,10).forEach(movie => {
                 lista.innerHTML += `
-                <div class="filme" onclick="selectmovie(${movie.id})">
+                <div class="filme" onmouseover="selectmovie(${movie.id})">
                     <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}">
                     <h4>${movie.original_title}</h4>
                 </div>`;
@@ -37,11 +37,10 @@ function selectmovie(id) {
         .then(response => response.json())
         .then(data => {
             document.getElementById("titulo").innerText = data.original_title;
-            document.getElementById("genero").innerHTML = "Gênero: ";
+            document.getElementById("genero").innerHTML = "Generos: ";
             data.genres.forEach(genre => {
-                document.getElementById("genero").innerHTML += `${genre.name} `;  
+                document.getElementById("genero").innerHTML += `<span>${genre.name}</span>`;
             })
-
             document.getElementById("descricao").innerText = data.overview;
             document.getElementById("views").innerText = `${data.popularity} pessoas já viram este título!`;
             document.getElementById("backdrop").src = `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`;
