@@ -37,7 +37,7 @@ function selectmovie(id) {
         .then(response => response.json())
         .then(data => {
             document.getElementById("titulo").innerText = data.original_title;
-            document.getElementById("genero").innerHTML = "Generos: ";
+            document.getElementById("genero").innerHTML = "Gênero: ";
             data.genres.forEach(genre => {
                 document.getElementById("genero").innerHTML += `${genre.name} `;  
             })
